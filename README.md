@@ -17,11 +17,7 @@ Podatki so v obliki:
 
 | Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
 | :---: | :---:| :---: | :---: | :---: | :---: | :---: | :---: |
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Hoteli, restavracije ali kavarne (1), trgovine (2) | Lizbona(1), Porto(2), drugo(3) | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | 
 
 ## Program
 
