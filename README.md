@@ -1,4 +1,4 @@
-# Analiza podatkov s programom R, 2018/19
+# Segmentacija trga - primerjava analize v R in strojnim učenjem v Pythonu.
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
@@ -6,9 +6,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 * [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=rstudio) RStudio
 
 ## Tematika
-
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci v isti množici podobni. Tako lahko podjetje prepozna ključne tipe svojih strank in njihovih nakupovalnih navad.
 
 ## Program
 
