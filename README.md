@@ -1,4 +1,4 @@
-# Segmentacija trga - primerjava analize v R in strojnim učenjem v Pythonu.
+# Segmentacija trga - Trgovina na debelo
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
@@ -6,8 +6,17 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 * [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=rstudio) RStudio
 
 ## Tematika
+
 Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci v isti množici podobni. Tako lahko podjetje prepozna ključne tipe svojih strank in njihovih nakupovalnih navad.
 
+## Podatkovni viri
+
+[UCL Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wholesale+customers)
+
+Podatki so v obliki:
+| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
+|:--------------:|:--------------:|:-------------:|:-----:|:------:|:-----------------:|:-------------------:|:----------:|
+|1 ali 2 - Hoteli, restavracije in kavarne (1), trgovine (2)|1, 2 ali 3 - Lizbona, Porto, Drugo|letna poraba monetarnih enot|letna poraba monetarnih enot|letna poraba monetarnih enot|letna poraba monetarnih enot|letna poraba monetarnih enot|letna poraba monetarnih enot|
 ## Program
 
 Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`.
