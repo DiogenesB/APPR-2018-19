@@ -15,9 +15,9 @@ Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci 
 
 Podatki so v obliki:
 
-| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
+| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zamrznjeni izdelki | Detergenti in papir | Delikatesa |
 | :---: | :---:| :---: | :---: | :---: | :---: | :---: | :---: |
-| Hoteli, restavracije ali kavarne (1), trgovine (2) | Lizbona(1), Porto(2), drugo(3) | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | 
+| Hoteli, restavracije ali kavarne (1), trgovine (2) | Lizbona (1), Porto (2), drugo (3) | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | Letna poraba monterane enote | 
 
 ## Program
 
