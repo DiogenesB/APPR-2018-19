@@ -11,7 +11,7 @@ Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci 
 
 ## Podatkovni viri
 
-[UCL Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wholesale+customers)
+[UCL Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wholesale+customers) - Podatki so v obliki CSV tabele.
 
 Podatki so v obliki:
 
