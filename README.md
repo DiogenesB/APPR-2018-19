@@ -19,7 +19,7 @@ Pogledal si bom:
 - Povprečni znesek nakupa in način plačila
 - Kategorije izdelkov, ki prevladujejo na platformi
 - Vizualizacija lokacije naslovov naročil (3. faza)
-- __ opcijsko __ : segmentacija trga
+- *opcijsko*: segmentacija trga
 
 ## Podatki
 
@@ -40,11 +40,13 @@ Podatkovni koncept tabele (po čiščenju podatkov):
 | :---: | :---: | :---: |
 | Datum, ko je logistični partner prejel izdelek, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ko je stranka dejansko prejela naročilo, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ki je bil predviden za prejem naročila, tip: string ("YYYY:MM:DD HH:MM:SS) |
 
+
 2. tabela (`olist_order_payments_dataset.csv`)
 
 | "payment_value" | "payment_type" |
 | :---: | :---: |
 | Znesek naročila, tip: double | Tip plačila, tip: string |
+
 
 3. tabela (`product_category_name_translation.csv`)
 
@@ -52,17 +54,20 @@ Podatkovni koncept tabele (po čiščenju podatkov):
 | :---: | :---: |
 | Kategorija izdelka v Portugalščini, tip: string | Kategorija izdelka v Angleščini, tip: string |
 
+
 4. tabela (`olist_products_dataset.csv`)
 
 | "product_id" | "product_category_name" |
 | :---: | :---: |
 | Šifrant artikla, tip: string (UUID) | Kategorija izdelka v Portugalščini |
 
+
 5. tabela (`olist_geolocation_dataset.csv`)
 
 | "geolocation_lat" | "geolocation_lng" |
 | :---: | :---: |
 | Zemljepisna širina, tip: double | Zemljepisna dolžina, tip: double |
+
 
 ### Plan dela
 1. tabela:
