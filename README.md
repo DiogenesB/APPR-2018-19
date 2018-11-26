@@ -34,35 +34,35 @@ Uporabil bom nabor 5 različnih csv dokumentov:
 ### Podatkovni model
 Podatkovni koncept tabele (po čiščenju podatkov):
 
-1. tabela (`olist_orders_dataset.csv`)
+#### 1. tabela (`olist_orders_dataset.csv`)
 
 | "order_delivered_carrier_date" | ""order_delivered_customer_date" | "order_estimated_delivery_date" |
 | :---: | :---: | :---: |
 | Datum, ko je logistični partner prejel izdelek, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ko je stranka dejansko prejela naročilo, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ki je bil predviden za prejem naročila, tip: string ("YYYY:MM:DD HH:MM:SS) |
 
 
-2. tabela (`olist_order_payments_dataset.csv`)
+#### 2. tabela (`olist_order_payments_dataset.csv`)
 
 | "payment_value" | "payment_type" |
 | :---: | :---: |
 | Znesek naročila, tip: double | Tip plačila, tip: string |
 
 
-3. tabela (`product_category_name_translation.csv`)
+#### 3. tabela (`product_category_name_translation.csv`)
 
 | "product_category_name" | "product_category_name_english" |
 | :---: | :---: |
 | Kategorija izdelka v Portugalščini, tip: string | Kategorija izdelka v Angleščini, tip: string |
 
 
-4. tabela (`olist_products_dataset.csv`)
+#### 4. tabela (`olist_products_dataset.csv`)
 
 | "product_id" | "product_category_name" |
 | :---: | :---: |
 | Šifrant artikla, tip: string (UUID) | Kategorija izdelka v Portugalščini |
 
 
-5. tabela (`olist_geolocation_dataset.csv`)
+#### 5. tabela (`olist_geolocation_dataset.csv`)
 
 | "geolocation_lat" | "geolocation_lng" |
 | :---: | :---: |
