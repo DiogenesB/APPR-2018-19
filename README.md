@@ -15,7 +15,12 @@ Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci 
 
 Podatki so v obliki:
 | Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 ## Program
 
