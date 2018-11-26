@@ -16,7 +16,7 @@ Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci 
 Podatki so v obliki:
 | Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 ali 2 - Hoteli, restavracije in kavarne (1), trgovine (2) | 1, 2 ali 3 - Lizbona, Porto, Drugo|letna poraba monetarnih enot |letna poraba monetarnih enot | letna poraba monetarnih enot | letna poraba monetarnih enot|letna poraba monetarnih enot|letna poraba monetarnih enot |
+
 ## Program
 
 Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`.
