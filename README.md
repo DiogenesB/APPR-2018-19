@@ -14,8 +14,9 @@ Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci 
 [UCL Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wholesale+customers)
 
 Podatki so v obliki:
-| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
 
+| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zmrznjeni izdelki | Detergenti in papir | Delikatesa |
+| :---: | :---:| :---: | :---: | :---: | :---: | :---: | :---: |
 
 | First Header  | Second Header |
 | ------------- | ------------- |
