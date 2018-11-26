@@ -1,4 +1,4 @@
-# Segmentacija trga - Trgovina na debelo
+# Analiza poslovanja na platformi [Olist](https://olist.com/)
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
@@ -7,17 +7,80 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Tematika
 
-Ideja je segmentirati kupce v različne množice (clustering), kjer so si kupci v isti množici podobni. Tako lahko podjetje prepozna ključne tipe svojih strank in njihovih nakupovalnih navad.
+### Kaj sploh je Olist?
+Olist je brazilska platforma, ki omogoča malim podjetjem vzpostaviti prodajne kanale preko njihove spletne strani ("brazilski ebay"). Podjetje lahko svoje izdelke prodaja preko Olist Store trgovine, svoje izdelke pa pošilja preko logističnih partnerjev Olist-a.
 
-## Podatkovni viri
+Potem ko kupec izpolni naročilo, prodajalec dobi obvestilo da lahko odpremi artikle. Ko stranka artikel prejme ali pa je datum predvidene dostave že mimo, stranka po epošti prejme anketo o zadovoljstvu, kjer lahko poda komentar o storitvi.
 
-[UCL Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wholesale+customers) - Podatki so v obliki CSV tabele.
+### Kakšen je cilj analize?
+Izvedel bom analizo naročil med leti 2016 in 2018. 
+Pogledal si bom:
+- Delež dostav, ki so bile izvedene v roku in hitrost dostave
+- Povprečni znesek nakupa in način plačila
+- Kategorije izdelkov, ki prevladujejo na platformi
+- Vizualizacija lokacije naslovov naročil (3. faza)
+- __ opcijsko __ : segmentacija trga
 
-Podatki so v obliki:
+## Podatki
 
-| Kanali prodaje | Regija prodaje | Sveži izdelki | Mleko | Živila | Zamrznjeni izdelki | Detergenti in papir | Delikatesa |
-| :---: | :---:| :---: | :---: | :---: | :---: | :---: | :---: |
-| Hoteli, restavracije ali kavarne (1), trgovine (2) | Lizbona (1), Porto (2), drugo (3) | Letna poraba monetarne enote | Letna poraba monetarne enote | Letna poraba monetarne enote | Letna poraba monetarne enote | Letna poraba monetarne enote | Letna poraba monetarne enote | 
+### Podatkovni vir
+[Vir](https://www.kaggle.com/olistbr/brazilian-ecommerce/home) iz katerega bom črpal podatke je javno dostopen nabor podatkov iz spletne platforme [Kaggle](https://www.kaggle.com/)
+Uporabil bom nabor 5 različnih csv dokumentov:
+1. 'olist_orders_dataset.csv'
+2. 'olist_order_payments_dataset.csv'
+3. 'product_category_name_translation.csv' in 'olist_products_dataset.csv'
+4. 'olist_geolocation_dataset.csv'
+
+### Podatkovni model
+Podatkovni koncept tabele (po čiščenju podatkov):
+
+1. tabela ('olist_orders_dataset.csv')
+| "order_delivered_carrier_date" | ""order_delivered_customer_date" | "order_estimated_delivery_date" |
+| :---: | :---: | :---: |
+| Datum, ko je logistični partner prejel izdelek, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ko je stranka dejansko prejela naročilo, tip: string ("YYYY:MM:DD HH:MM:SS) | Datum, ki je bil predviden za prejem naročila, tip: string ("YYYY:MM:DD HH:MM:SS) |
+
+2. tabela ('olist_order_payments_dataset.csv')
+| "payment_value" | "payment_type" |
+| :---: | :---: |
+| Znesek naročila, tip: double | Tip plačila, tip: string |
+
+3. tabela ('product_category_name_translation.csv')
+| "product_category_name" | "product_category_name_english" |
+| :---: | :---: |
+| Kategorija izdelka v Portugalščini, tip: string | Kategorija izdelka v Angleščini, tip: string |
+
+4. tabela ('olist_products_dataset.csv')
+| "product_id" | "product_category_name" |
+| :---: | :---: |
+| Šifrant artikla, tip: string (UUID) | Kategorija izdelka v Portugalščini |
+
+5. tabela ('olist_geolocation_dataset.csv')
+| "geolocation_lat" | "geolocation_lng" |
+| :---: | :---: |
+| Zemljepisna širina, tip: double | Zemljepisna dolžina, tip: double |
+
+### Plan dela
+1. tabela:
+    - Čiščenje podatkov
+    - Pretvarjanje tipov
+    - Razvrščanje v množice
+
+2. tabela:
+    - Čiščenje podatkov
+    - Razvrščanje podatkov
+
+3. tabela:
+    - Čiščenje podatkov
+    - Združevanje s 4. tabelo
+
+4. tabela:
+    - Čiščenje podatkov
+    - Združevanje s 3. tabelo
+    - Analiza pogostosti kategorij
+
+5. tabela:
+    - Čiščenje podatkov
+    - Vizualizacija naročil
 
 ## Program
 
