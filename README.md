@@ -73,11 +73,11 @@ Podatkovni koncept tabele (po čiščenju podatkov):
 1. tabela:
     - Čiščenje podatkov
     - Pretvarjanje tipov
-    - Razvrščanje v množice
+    - Razvrščanje v množice ("Clustering")
 
 2. tabela:
     - Čiščenje podatkov
-    - Razvrščanje podatkov
+    - Razvrščanje v množice ("Clustering")
 
 3. tabela:
     - Čiščenje podatkov
