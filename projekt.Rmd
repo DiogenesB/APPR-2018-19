@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Tin Markon"
 output:
   html_document: default
   pdf_document:
@@ -26,9 +26,9 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Izvedel sem analizo poslovanja na platformi Olist. Platforma Olist prodajalcem ponuja prodajne kanale preko katerih prodajajo svoje izdelke in logistične partnerje preko katerih jih dostavljajo. 
 
-![](slike/grb.png)
+![](slike/logo.png)
 
 ***
 
