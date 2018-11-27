@@ -31,66 +31,77 @@ Uporabil bom nabor 5 različnih csv dokumentov:
 3. `product_category_name_translation.csv` in `olist_products_dataset.csv`
 4. `olist_geolocation_dataset.csv`
 
+Pri napredni analizi bom uporabil 2 tabeli:
+1. `olist_orders_dataset.csv`
+2. `olist_customers_dataset.csv`
+
 ### Podatkovni model
 Podatkovni koncept tabele (po čiščenju podatkov):
 
-#### 1. tabela (`olist_orders_dataset.csv`)
+#### 1. tabela (`olist.orders.dataset.csv`)
 
-| "order_delivered_carrier_date" | ""order_delivered_customer_date" | "order_estimated_delivery_date" |
+| "order.delivered.carrier.date" | ""order.delivered.customer.date" | "order.estimated.delivery.date" |
 | :---: | :---: | :---: |
-| Datum, ko je logistični partner prejel izdelek, tip: besedilo ("YYYY:MM:DD HH:MM:SS) | Datum, ko je stranka dejansko prejela naročilo, tip: besedilo ("YYYY:MM:DD HH:MM:SS) | Datum, ki je bil predviden za prejem naročila, tip: besedilo ("YYYY:MM:DD HH:MM:SS) |
+| Datum, ko je logistični partner prejel izdelek, tip: date object | Datum, ko je stranka dejansko prejela naročilo, tip: date object | Datum, ki je bil predviden za prejem naročila, tip: date object |
 
 
-#### 2. tabela (`olist_order_payments_dataset.csv`)
+#### 2. tabela (`olist.order.payments.dataset.csv`)
 
-| "payment_value" | "payment_type" |
+| "payment.value" | "payment.type" |
 | :---: | :---: |
 | Znesek naročila, tip: število | Tip plačila, tip: neurejen faktor |
 
 
-#### 3. tabela (`product_category_name_translation.csv`)
+#### 3. tabela (`product.category.name.translation.csv`)
 
-| "product_category_name" | "product_category_name_english" |
+| "product.category.name" | "product.category.name.english" |
 | :---: | :---: |
 | Kategorija izdelka v Portugalščini, tip: neurejen faktor | Kategorija izdelka v Angleščini, tip: neurejen faktor |
 
 
-#### 4. tabela (`olist_products_dataset.csv`)
+#### 4. tabela (`olist.products.dataset.csv`)
 
-| "product_id" | "product_category_name" |
+| "product.id" | "product.category.name" |
 | :---: | :---: |
-| Šifrant artikla, tip: besedilo (UUID) | Kategorija izdelka v Portugalščini, tip: neurejen faktor |
+| Šifrant artikla, tip: hexadecimal | Kategorija izdelka v Portugalščini, tip: neurejen faktor |
 
 
-#### 5. tabela (`olist_geolocation_dataset.csv`)
+#### 5. tabela (`olist.geolocation.dataset.csv`)
 
-| "geolocation_lat" | "geolocation_lng" |
+| "geolocation.lat" | "geolocation.lng" |
 | :---: | :---: |
 | Zemljepisna širina, tip: število | Zemljepisna dolžina, tip: število |
 
 
 ### Plan dela
+
 1. tabela:
     - Čiščenje podatkov
-    - Pretvarjanje tipov
-    - Razvrščanje v množice ("Clustering")
+    - Pretvarjanje tipov 
+    - Analiza in vizualizacija
 
 2. tabela:
     - Čiščenje podatkov
-    - Razvrščanje v množice ("Clustering")
+    - Analiza in vizualizacija
 
 3. tabela:
     - Čiščenje podatkov
+    - Pretvarjanje tipov
     - Združevanje s 4. tabelo
 
 4. tabela:
     - Čiščenje podatkov
+    - Pretvarjanje tipov
     - Združevanje s 3. tabelo
-    - Analiza pogostosti kategorij
+    - Analiza 
 
 5. tabela:
     - Čiščenje podatkov
     - Vizualizacija naročil
+
+## Napredna analiza
+
+Pri napredni analizi (linerani agresiji) bom izračunaval **predviden čas pošiljke** s pomočjo 1. tabele (`olist.orders.dataset.csv`) in segmentacijo kupcev s pomočjo 1. in 2. tabele (`olist_orders_dataset.csv` in `olist_customers_dataset.csv` )
 
 ## Program
 
@@ -126,6 +137,7 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `mosaic` - za pretvorbo zemljevidov v obliko za risanje z `ggplot2`
 * `maptools` - za delo z zemljevidi
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+* `ostalo` - sprotno dopolnjevanje (od 2. faze dalje)
 
 ## Binder
 
