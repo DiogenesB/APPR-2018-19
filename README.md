@@ -15,11 +15,12 @@ Potem ko kupec izpolni naročilo, prodajalec dobi obvestilo da lahko odpremi art
 ### Kakšen je cilj analize?
 Izvedel bom analizo naročil med leti 2016 in 2018. 
 Pogledal si bom:
-- Delež dostav, ki so bile izvedene v roku in hitrost dostave
-- Povprečni znesek nakupa in način plačila
-- Kategorije izdelkov, ki prevladujejo na platformi
+- Delež dostav, ki so bile izvedene v roku in hitrost dostave v odvisnosti razdalje (3. faza)
+- Povprečni znesek nakupa in način plačila (3. faza)
+- Kategorije izdelkov, ki prevladujejo na platformi (3. faza)
 - Vizualizacija lokacije naslovov naročil (3. faza)
-- *opcijsko*: segmentacija trga
+- Predvidevanje prejema naročila (4. faza)
+- Segmentacija trga (4. faza)
 
 ## Podatki
 
@@ -28,61 +29,60 @@ Pogledal si bom:
 Uporabil bom nabor 5 različnih csv dokumentov:
 1. `olist_orders_dataset.csv`
 2. `olist_order_payments_dataset.csv`
-3. `product_category_name_translation.csv` in `olist_products_dataset.csv`
-4. `olist_geolocation_dataset.csv`
+3. `product_category_name_translation.csv`
+4. `olist_products_dataset.csv`
+5. `olist_geolocation_dataset.csv`
 
 Pri napredni analizi bom uporabil 2 tabeli:
 1. `olist_orders_dataset.csv`
 2. `olist_customers_dataset.csv`
 
 ### Podatkovni model
-Podatkovni koncept tabele (po čiščenju podatkov):
 
-#### 1. tabela (`olist.orders.dataset.csv`)
+Podatkovni koncept tabel (shema tabel po 2. fazi):
+
+#### 1. tabela (`olist_orders_dataset.csv`)
 
 | "order.delivered.carrier.date" | ""order.delivered.customer.date" | "order.estimated.delivery.date" |
 | :---: | :---: | :---: |
 | Datum, ko je logistični partner prejel izdelek, tip: date object | Datum, ko je stranka dejansko prejela naročilo, tip: date object | Datum, ki je bil predviden za prejem naročila, tip: date object |
 
 
-#### 2. tabela (`olist.order.payments.dataset.csv`)
+#### 2. tabela (`olist_order_payments_dataset.csv`)
 
 | "payment.value" | "payment.type" |
 | :---: | :---: |
 | Znesek naročila, tip: število | Tip plačila, tip: neurejen faktor |
 
 
-#### 3. tabela (`product.category.name.translation.csv`)
-
-| "product.category.name" | "product.category.name.english" |
-| :---: | :---: |
-| Kategorija izdelka v Portugalščini, tip: neurejen faktor | Kategorija izdelka v Angleščini, tip: neurejen faktor |
-
-
-#### 4. tabela (`olist.products.dataset.csv`)
+#### 3. tabela (`olist_products_dataset.csv` in `product_category_name_translation.csv` )
 
 | "product.id" | "product.category.name" |
 | :---: | :---: |
-| Šifrant artikla, tip: hexadecimal | Kategorija izdelka v Portugalščini, tip: neurejen faktor |
+| Šifrant artikla, tip: hexadecimal (UUID) | Kategorija izdelka v Angleščini (z uporabo 3. in 4. csvja), tip: neurejen faktor |
 
 
-#### 5. tabela (`olist.geolocation.dataset.csv`)
+#### 4. tabela (`olist_geolocation_dataset.csv`)
 
 | "geolocation.lat" | "geolocation.lng" |
 | :---: | :---: |
 | Zemljepisna širina, tip: število | Zemljepisna dolžina, tip: število |
 
+Podatkovni model za napredno analizo še ni dokončan **TODO**
 
 ### Plan dela
+
+#### Čiščenje in analiza podaktov (2. in 3. faza)
 
 1. tabela:
     - Čiščenje podatkov
     - Pretvarjanje tipov 
-    - Analiza in vizualizacija
+    - Analiza
 
 2. tabela:
     - Čiščenje podatkov
-    - Analiza in vizualizacija
+    - Pretvarjanje tipov
+    - Analiza
 
 3. tabela:
     - Čiščenje podatkov
@@ -99,9 +99,9 @@ Podatkovni koncept tabele (po čiščenju podatkov):
     - Čiščenje podatkov
     - Vizualizacija naročil
 
-## Napredna analiza
+#### Napredna analiza (4. faza)
 
-Pri napredni analizi (linerani agresiji) bom izračunaval **predviden čas pošiljke** s pomočjo 1. tabele (`olist.orders.dataset.csv`) in segmentacijo kupcev s pomočjo 1. in 2. tabele (`olist_orders_dataset.csv` in `olist_customers_dataset.csv` )
+Pri napredni analizi (linerani agresiji) bom izračunaval **predviden čas pošiljke** s pomočjo 1. tabele (`olist.orders.dataset.csv`) in **segmentacijo kupcev** (clustering) s pomočjo 1. in 2. tabele (`olist_orders_dataset.csv` in `olist_customers_dataset.csv` )
 
 ## Program
 
