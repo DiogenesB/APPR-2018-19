@@ -26,16 +26,15 @@ Pogledal si bom:
 
 ### Podatkovni vir
 [Vir](https://www.kaggle.com/olistbr/brazilian-ecommerce/home) iz katerega bom črpal podatke je javno dostopen nabor podatkov iz spletne platforme [Kaggle](https://www.kaggle.com/)
-Uporabil bom nabor 5 različnih csv dokumentov:
+Uporabil bom nabor 7 različnih csv dokumentov:
 1. `olist_orders_dataset.csv`
 2. `olist_order_payments_dataset.csv`
 3. `product_category_name_translation.csv`
 4. `olist_products_dataset.csv`
 5. `olist_geolocation_dataset.csv`
+6. `olist_sellers_dataset.csv`
+7. `olist_order_items_data.csv`
 
-Pri napredni analizi bom uporabil 2 tabeli:
-1. `olist_orders_dataset.csv`
-2. `olist_customers_dataset.csv`
 
 ### Podatkovni model
 
@@ -68,7 +67,11 @@ Podatkovni koncept tabel (shema tabel po 2. fazi):
 | :---: | :---: |
 | Zemljepisna širina, tip: število | Zemljepisna dolžina, tip: število |
 
-Podatkovni model za napredno analizo še ni dokončan **TODO**
+#### 5. tabela (`olist_orders_dataset.csv`, `olist.sellers.dataset, `olist.geolocation.dataset in `olist.order.items.dataset)
+
+| "seller.lat" | "seller.lng" | "custmer.lat" | "custmer.lng" | "order.approved.at" | "order.delivered.custmer.date" (to spremenljivko napovedujemo) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| Zemljepisna širina prodajalca, tip: število | Zemljepisna dolžina prodajalca, tip: število | Zemljepisna širina kupca, tip: število | Zemljepisna dolžina kupca, tip: število | Čas, ko je bilo potrjeno naročilo, tip: date object (?)| Čas, ko so bili naročilo dostavljeno, tip: datetime   
 
 ### Plan dela
 
