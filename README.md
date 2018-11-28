@@ -67,7 +67,7 @@ Podatkovni koncept tabel (shema tabel po 2. fazi):
 | :---: | :---: |
 | Zemljepisna širina, tip: število | Zemljepisna dolžina, tip: število |
 
-#### 5. tabela (`olist_orders_dataset.csv`, `olist.sellers.dataset, `olist.geolocation.dataset in `olist.order.items.dataset)
+#### 5. tabela (`olist_orders_dataset.csv`, `olist.sellers.dataset.csv`, `olist.geolocation.dataset.csv` in `olist.order.items.dataset.csv`)
 
 | "seller.lat" | "seller.lng" | "custmer.lat" | "custmer.lng" | "order.approved.at" | "order.delivered.custmer.date" (to spremenljivko napovedujemo) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
