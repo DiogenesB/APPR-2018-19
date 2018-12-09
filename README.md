@@ -2,10 +2,10 @@
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
-* [![Shiny](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=shiny/APPR-2018-19/projekt.Rmd) Shiny
-* [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=rstudio) RStudio
+* [![Shiny](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/DiogenesB/APPR-2018-19/master?urlpath=shiny/APPR-2018-19/projekt.Rmd) Shiny
+* [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/DiogenesB/APPR-2018-19/master?urlpath=rstudio) RStudio
 
-## Tematika
+## Tematikas
 
 ### Kaj sploh je Olist?
 Olist je brazilska platforma, ki omogoča malim podjetjem vzpostaviti prodajne kanale preko njihove spletne strani ("brazilski ebay"). Podjetje lahko svoje izdelke prodaja preko Olist Store trgovine, svoje izdelke pa pošilja preko logističnih partnerjev Olist-a.
@@ -157,7 +157,7 @@ gre samo za navodilo za Binder, katere pakete naj namesti pred poganjanjem vaše
 
 Tako nameščanje paketov se bo izvedlo pred vsakim poganjanjem v Binderju.
 Če se izkaže, da je to preveč zamudno,
-lahko pripravite [lastno sliko](https://github.com/jaanos/APPR-docker) z želenimi paketi.
+lahko pripravite [lastno sliko](https://github.com/DiogenesB/APPR-docker) z želenimi paketi.
 
 Če želite v Binderju delati z git,
 v datoteki `gitconfig` nastavite svoje ime in priimek ter e-poštni naslov
