@@ -157,7 +157,7 @@ gre samo za navodilo za Binder, katere pakete naj namesti pred poganjanjem vaše
 
 Tako nameščanje paketov se bo izvedlo pred vsakim poganjanjem v Binderju.
 Če se izkaže, da je to preveč zamudno,
-lahko pripravite [lastno sliko](https://github.com/DiogenesB/APPR-docker) z želenimi paketi.
+lahko pripravite [lastno sliko](https://github.com/jaanos/APPR-docker) z želenimi paketi.
 
 Če želite v Binderju delati z git,
 v datoteki `gitconfig` nastavite svoje ime in priimek ter e-poštni naslov
