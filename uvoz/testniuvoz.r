@@ -17,6 +17,11 @@ colnames(tabela_vrst_placil) <- stolpci_2
 #Uvoz tretje tabele
 stolpci_3 <- c("Tip produkta", "Kategorija produkta", "Dolžina naziva produkta", "Dolžina opisa produkta", 
                "Število objavljenih fotografij produkta", "Masa produkta (g)", "Dolžina (cm)", "Višina (cm)", "Širina (cm")
-tabela_produktov <- read_csv("podatki/olist_products_dataset.csv", na = c("", " ", "NA"))
+tabela_produktov <- read_csv("podatki/olist_products_dataset.csv", na = c("", " ", "NA")) %>% drop_na() 
 colnames(tabela_produktov) <- stolpci_3
-tabela_produktov <- drop_na(tabela_produktov)
+
+#Uvoz četrte tabele
+stolpci_4 <- c("Original", "Prevod")
+tabela_prevodov <- read_csv("podatki/product_category_name_translation.csv")
+colnames(tabela_prevodov) <- stolpci_4
+
