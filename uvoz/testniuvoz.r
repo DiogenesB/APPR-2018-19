@@ -1,6 +1,7 @@
 library(readr)
 library(tidyr)
 library(dplyr)
+library(ggplot2)
 #Uvoz prve tabele
 stolpci_1 <- c("Številka naročila", "Številka uporabnika", "Status naročila", "Čas nakupa", 
                "Odobren čas nakupa", "Čas ko je pošiljko prejel partner", "Dejanski čas dostave", "Predviden čas dostave" )
@@ -24,4 +25,14 @@ colnames(tabela_produktov) <- stolpci_3
 stolpci_4 <- c("Original", "Prevod")
 tabela_prevodov <- read_csv("podatki/product_category_name_translation.csv")
 colnames(tabela_prevodov) <- stolpci_4
+
+
+#Združevanje 1. in 2. tabele
+narocila <- left_join(tabela_narocil, tabela_vrst_placil, by = c("Številka naročila"), copy=FALSE)
+
+#Združevanje 3. in 4. tabele
+produkti <- left_join(tabela_produktov, tabela_prevodov, by = c("Kategorija produkta"="Original"), copy=FALSE)
+produkti$`Kategorija produkta` <- NULL
+names(produkti)[9] <- c("Kategorija produkta")
+
 
