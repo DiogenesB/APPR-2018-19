@@ -3,21 +3,21 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 #Uvoz prve tabele
-stolpci_1 <- c("ključ.naročila", "ključ.uporabnika", "status.naročila", "čas.nakupa", 
-               "odobren.čas.nakupa", "čas.ko.je.pošiljko.prejel.partner", "dejanski.čas.dostave", "predviden.čas.dostave" )
+stolpci_1 <- c("kljuc.narocila", "kljuc.uporabnika", "status.narocila", "cas.nakupa", 
+               "odobren.cas.nakupa", "cas.ko.je.posiljko.prejel.partner", "dejanski.cas.dostave", "predviden.cas.dostave" )
 tabela_narocil <- read_csv("podatki/olist_orders_dataset.csv", na = c("", " ", "NA")) %>% drop_na()
 colnames(tabela_narocil) <- stolpci_1
 
 
 #Uvoz druge tabele
-stolpci_2 <- c("ključ.naročila", "zaporedje.plačila", "tip.plačila", "število.obrokov.plačila", "vrednost.plačila")
+stolpci_2 <- c("kljuc.narocila", "zaporedje.placila", "tip.placila", "stevilo.obrokov.placila", "vrednost.placila")
 tabela_vrst_placil <- read_csv("podatki/olist_order_payments_dataset.csv")
 colnames(tabela_vrst_placil) <- stolpci_2
 
 
 #Uvoz tretje tabele
-stolpci_3 <- c("ključ.izdelka", "kategorija.izdelka", "dolžina.naziva.izdelka", "dolžina.opisa.izdelka", 
-               "število.objavljenih.fotografij.izdelka", "masa.izdelka (g)", "dolžina (cm)", "višina (cm)", "širina (cm")
+stolpci_3 <- c("kljuc.izdelka", "kategorija.izdelka", "dolzina.naziva.izdelka", "dolzina.opisa.izdelka", 
+               "stevilo.objavljenih.fotografij.izdelka", "masa.izdelka (g)", "dolzina", "visina", "sirina")
 tabela_produktov <- read_csv("podatki/olist_products_dataset.csv", na = c("", " ", "NA")) %>% drop_na() 
 colnames(tabela_produktov) <- stolpci_3
 
