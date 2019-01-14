@@ -2,6 +2,9 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(ggplot2)
+
+
+
 #Uvoz prve tabele
 stolpci_1 <- c("kljuc.narocila", "kljuc.uporabnika", "status.narocila", "cas.nakupa", 
                "odobren.cas.nakupa", "cas.ko.je.posiljko.prejel.partner", "dejanski.cas.dostave", "predviden.cas.dostave" )
@@ -28,14 +31,42 @@ colnames(tabela_prevodov) <- stolpci_4
 
 
 #Združevanje 1. in 2. tabele
-narocila <- left_join(tabela_narocil, tabela_vrst_placil, by = c("ključ.naročila"), copy=FALSE)
-narocila$`Status naročila` <- as.factor(narocila$`Status naročila`)
+narocila <- left_join(tabela_narocil, tabela_vrst_placil, by = c("kljuc.narocila"), copy=FALSE)
+narocila <- narocila %>% drop_na()
+narocila$status.narocila <- as.factor(narocila$status.narocila)
+narocila$tip.placila <- as.factor(narocila$tip.placila)
+narocila$kljuc.uporabnika <- NULL
+narocila$odobren.cas.nakupa <- NULL
+narocila$cas.ko.je.posiljko.prejel.partner <- NULL
+narocila$pravocasnost = narocila$predviden.cas.dostave >= narocila$dejanski.cas.dostave
+
+## Ker lahko plačujemo eno naročilo z različnimi plač. sredstvi, se lahko vrstice z istim ključem ponavljajo.
+# narocila <- narocila %>%
+#     group_by(kljuc.narocila) %>%
+#     mutate(tip.placila = paste0(tip.placila, collapse = " ")) %>%
+#     mutate(vrednost.placila = sum(vrednost.placila)) 
+  
+
+
+
 
 #Združevanje 3. in 4. tabele
-produkti <- left_join(tabela_produktov, tabela_prevodov, by = c("kategorija.produkta"="original"), copy=FALSE)
-produkti$kategorija.izdelka <- NULL
-produkti$dolžina.naziva.izdelka <- NULL
-produkti$dolžina.opisa.izdelka<- NULL
-produkti$število.objavljenih.fotografij.izdelka <- NULL
-names(produkti)[6] <- c("kategorija.produkta")
+izdelki <- left_join(tabela_produktov, tabela_prevodov, by = c("kategorija.izdelka"="original"), copy=FALSE)
+izdelki$kategorija.izdelka <- NULL
+izdelki$dolžina.naziva.izdelka <- NULL
+izdelki$dolžina.opisa.izdelka<- NULL
+izdelki$število.objavljenih.fotografij.izdelka <- NULL
+names(izdelki)[6] <- c("kategorija.izdelka")
+
+
+# ggplot(narocila, aes(x=narocila$tip.placila)) + geom_bar()
+# ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density()
+# 
+# 
+# 
+# ggplot(narocila, aes(narocila$pravocasnost)) + geom_bar()
+
+
+
+
 
