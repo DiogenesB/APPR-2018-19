@@ -7,7 +7,6 @@ output:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -24,7 +23,7 @@ source("lib/libraries.r", encoding="UTF-8")
 source("lib/rstudio.r", encoding="UTF-8")
 ```
 
-# Izbira teme
+# Analiza poslovanja na platformi Olist
 
 Izvedel sem analizo poslovanja na platformi Olist. Platforma Olist prodajalcem ponuja prodajne kanale preko katerih prodajajo svoje izdelke in logistične partnerje preko katerih jih dostavljajo. 
 
@@ -35,37 +34,34 @@ Izvedel sem analizo poslovanja na platformi Olist. Platforma Olist prodajalcem p
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE}
-#source("uvoz/testniuvoz.r", encoding="UTF-8")
+source("uvoz/testniuvoz.r", encoding="UTF-8")
 ```
 
 Podatke sem uvozil v obliki 4 različnih CSV datotek, ki so zdaj v 2 razpredelnicah v obliki *tidy data*.
 
-1. `narocila` - podatki o plačilih na portalu
-  - `ključ.naročila` 
-  - `status.naročila`
-  - `čas.nakupa` 
-  - `odobren.čas.nakupa`
-  - `čas.ko.je.pošiljko.prejel.partner`
-  - `dejanski.čas.dostave`
-  - `predviden.čas.dostave`
-  - `zaporedje.plačila`
-  - `tip.plačila`
-  - `število.obrokov.plačila`
-  - `vrednost.plačila`
+1. `narocila` - podatki o vseh naročilih na portalu
+  - `kljuc.narocila` - spremenljivka: ključ naročila (identifikacija)
+  - `status.narocila` - meritev: kakšen je status naročila (dostavljeno, nedostavljeno)
+  - `cas.nakupa` - meritev: čas, ko je uporabnik plačal naročilo (datetime objekt)
+  - `dejanski.cas.dostave` - meritev: čas, ko je uporabnik prejel izdelke iz naročila (datetime objekt)
+  - `predviden.cas.dostave` - spremenljivka: čas, ki ga je portal predvideval za prejem naročila (datetime objekt)
+  - `zaporedje.placila`- meritev: 
+  - `tip.placila` - meritev: Tip plačilnega sredstva, s katerim je uporabnik plačal naročilo (neurejen faktor: c)
+  - `število.obrokov.placila`- meritev: 
+  - `vrednost.placila`- meritev: vrednost naročila 
 
-2. `produkti` - podatki o produktih na portalu
-  - `ključ.izdelka` - spremenljivka: ime občine (neurejen faktor),
-  - `masa.izdelka` - meritev: masa izdelka v g (število),
-  - `dolžina` - meritev: prebivalstvo občine (število),
-  - `širina` - meritev: število prebivalcev na km$^2$ (število),
-  - `višina` - meritev: število naselij v občini (število),
-  - `kategorija izdelka` - meritev: leto ustanovitve občine (število),
-  
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+2. `produkti` 
+  - `kljuc.izdelka` 
+  - `masa.izdelka` 
+  - `dolzina`
+  - `sirina` 
+  - `visina` 
+  - `kategorija.izdelka`
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
+```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Pregled prometa v letu 2017 po mesecih'}
+
+
 
 ```
 
@@ -77,7 +73,6 @@ Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 #source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 
 ```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
 
@@ -91,7 +86,6 @@ Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 #source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
 ```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
 
@@ -99,6 +93,3 @@ Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
 ***
 
-```{r shiny, echo=FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```
