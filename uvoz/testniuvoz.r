@@ -2,6 +2,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(ggplot2)
+library(lubridate)
 
 
 
@@ -39,6 +40,17 @@ narocila$kljuc.uporabnika <- NULL
 narocila$odobren.cas.nakupa <- NULL
 narocila$cas.ko.je.posiljko.prejel.partner <- NULL
 narocila$pravocasnost = narocila$predviden.cas.dostave >= narocila$dejanski.cas.dostave
+
+
+promet_2017 <- narocila %>%
+    select(dejanski.cas.dostave, vrednost.placila) %>%
+    filter(dejanski.cas.dostave >= "2016-12-31" & dejanski.cas.dostave <= "2018-01-01") %>%
+    mutate(mesec.dostave = month(dejanski.cas.dostave)) %>%
+    select(mesec.dostave, vrednost.placila) %>%
+    group_by(mesec.dostave) %>%
+    summarise(vrednost.placila = sum(vrednost.placila))
+
+
 
 ## Ker lahko plačujemo eno naročilo z različnimi plač. sredstvi, se lahko vrstice z istim ključem ponavljajo.
 # narocila <- narocila %>%
