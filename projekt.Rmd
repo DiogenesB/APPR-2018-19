@@ -41,29 +41,28 @@ Podatke sem uvozil v obliki 4 različnih CSV datotek, ki so zdaj v 2 razpredelni
 
 1. `narocila` - podatki o vseh naročilih na portalu
   - `kljuc.narocila` - spremenljivka: ključ naročila (identifikacija)
-  - `status.narocila` - meritev: kakšen je status naročila (dostavljeno, nedostavljeno)
+  - `status.narocila` - meritev: kakšen je status naročila (neurjene faktor: dostavljeno, nedostavljeno)
   - `cas.nakupa` - meritev: čas, ko je uporabnik plačal naročilo (datetime objekt)
   - `dejanski.cas.dostave` - meritev: čas, ko je uporabnik prejel izdelke iz naročila (datetime objekt)
   - `predviden.cas.dostave` - spremenljivka: čas, ki ga je portal predvideval za prejem naročila (datetime objekt)
-  - `zaporedje.placila`- meritev: 
-  - `tip.placila` - meritev: Tip plačilnega sredstva, s katerim je uporabnik plačal naročilo (neurejen faktor: c)
-  - `število.obrokov.placila`- meritev: 
-  - `vrednost.placila`- meritev: vrednost naročila 
+  - `tip.placila` - meritev: Tip plačilnega sredstva, s katerim je uporabnik plačal naročilo (neurejen faktor: kreditna kartica, boleto, kupon, debetna kartica)
+  - `število.obrokov.placila`- meritev: na koliko obrokov so uporabniki kupili naročilo (število)
+  - `vrednost.placila`- meritev: vrednost naročila (število)
+  - `pravocasnost` - meritev: Ali je bilo naročilo dostavljeno v predvidenem roku dostave (TRUE, FALSE)
 
-2. `produkti` 
-  - `kljuc.izdelka` 
-  - `masa.izdelka` 
-  - `dolzina`
-  - `sirina` 
-  - `visina` 
-  - `kategorija.izdelka`
-
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Pregled prometa v letu 2017 po mesecih'}
+2. `produkti` - podatki o vseh izdelkih na platformi
+  - `kljuc.izdelka` - spremenljivka: ključ izdelka (identifikacija)
+  - `masa.izdelka` - meritev: masa izdelka (gram)
+  - `dolzina` - meritev: dolžina izdelka (cm)
+  - `sirina` - meritev: širina izdelka (cm)
+  - `visina` - meritev: višina izdelka (cm)
+  - `kategorija.izdelka` - spremenljivka: v katero kategorijo spada izdelek.
 
 
-
+```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
+ggplot(promet_2017, aes(x = promet_2017$mesec.dostave, y = promet_2017$vrednost.placila)) + geom_bar(stat = "identity") + labs(title = "Pregled prometa v letu 2017", x = "Mesec", y = "Skupni promet")
 ```
+
 
 ***
 
