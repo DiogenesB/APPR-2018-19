@@ -44,12 +44,12 @@ narocila$pravocasnost = narocila$predviden.cas.dostave >= narocila$dejanski.cas.
 
 #Tabela ki opisuje promet na platformi v letu 2017
 promet_2017 <- narocila %>%
-    select(dejanski.cas.dostave, vrednost.placila) %>%
-    filter(dejanski.cas.dostave >= "2016-12-31" & dejanski.cas.dostave <= "2018-01-01") %>%
-    mutate(mesec.dostave = month(dejanski.cas.dostave)) %>%
-    select(mesec.dostave, vrednost.placila) %>%
-    group_by(mesec.dostave) %>%
-    summarise(vrednost.placila = sum(vrednost.placila))
+  select(dejanski.cas.dostave, vrednost.placila) %>%
+  filter(dejanski.cas.dostave >= "2016-12-31" & dejanski.cas.dostave <= "2018-01-01") %>%
+  mutate(mesec.dostave = month(dejanski.cas.dostave)) %>%
+  select(mesec.dostave, vrednost.placila) %>%
+  group_by(mesec.dostave) %>%
+  summarise(vrednost.placila = sum(vrednost.placila))
 
 
 #Tabela, ki opisuje promet na platformi v decembru leta 2017

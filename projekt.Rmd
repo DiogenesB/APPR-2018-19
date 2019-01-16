@@ -57,46 +57,40 @@ Podatke sem uvozil v obliki 4 različnih CSV datotek, ki so zdaj v 2 razpredelni
   - `sirina` - meritev: širina izdelka (cm)
   - `visina` - meritev: višina izdelka (cm)
   - `kategorija.izdelka` - spremenljivka: v katero kategorijo spada izdelek.
-
-
-***
-
+  
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-source("vizualizacija/vizualizacija.r", encoding="UTF-8")
-```
-
-# ```{r tipi placil, echo=FALSE, warning=FALSE}
-# ggplot(narocila, aes(narocila$tip.placila)) + geom_bar(labels = c("boleto", "kreditne kartice", "debetne kartice", "bon")) +
-#   labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete()
-# 
-# ```
-# 
-# ```{r gostota cen, echo=FALSE, warning=FALSE}
-# ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
-# ```
-# 
-# ```{r kategorije izdelkov, echo=FALSE, message=FALSE}
-# ggplot(izdelki, aes(izdelki$prevod)) + geom_bar()
-# print(graf_kategorije_izdelkov)
-# ```
-
 ```{r promet 2017, echo=FALSE, message=FALSE}
+promet_2017 <- narocila %>%
+    select(dejanski.cas.dostave, vrednost.placila) %>%
+    filter(dejanski.cas.dostave >= "2016-12-31" & dejanski.cas.dostave <= "2018-01-01") %>%
+    mutate(mesec.dostave = month(dejanski.cas.dostave)) %>%
+    select(mesec.dostave, vrednost.placila) %>%
+    group_by(mesec.dostave) %>%
+    summarise(vrednost.placila = sum(vrednost.placila))
+
 meseci <- c("Januar", "Februar", "Marec", "April", "Maj", "Junij", "Julij", "Avgust", "September", "Oktober", "November", "December")
 ggplot(promet_2017, aes(x = promet_2017$mesec.dostave, y = promet_2017$vrednost.placila / 1000)) + geom_col() + 
   labs(title = "Pregled prometa v letu 2017", x = "Mesec", y = "Skupni promet (v 1000€)") + scale_x_continuous(breaks = 1:12, labels = meseci )
 ```
 
-# ```{r december 2017, echo=FALSE, message=FALSE}
-# ggplot(december, aes(x=december$dan.narocila, y = december$vrednost.placila)) + geom_col() + 
-#   labs(title = "Pregled prometa v decembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:31)
-# ```
-# 
-# ```{r november 2017, echo=FALSE, message=FALSE}
-# ggplot(november, aes(x=november$dan.narocila, y=november$vrednost.placila)) + geom_col() +
-#   labs(title = "Pregled prometa v novembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:30)
-# ```
+```{r tipi placil, echo=FALSE, warning=FALSE}
+ggplot(narocila, aes(narocila$tip.placila)) + geom_bar(labels = c("boleto", "kreditne kartice", "debetne kartice", "bon")) +labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete()
+```
+
+```{r gostota cen, echo=FALSE, warning=FALSE}
+ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
+```
+
+```{r december 2017, echo=FALSE, message=FALSE}
+ ggplot(december, aes(x=december$dan.narocila, y = december$vrednost.placila)) + geom_col() +
+   labs(title = "Pregled prometa v decembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:31)
+```
+
+```{r november 2017, echo=FALSE, message=FALSE}
+ ggplot(november, aes(x=november$dan.narocila, y=november$vrednost.placila)) + geom_col() +
+   labs(title = "Pregled prometa v novembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:30)
+```
 
 
 
