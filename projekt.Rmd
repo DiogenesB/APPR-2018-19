@@ -69,7 +69,7 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 
 ```{r tipi placil, echo=FALSE, warning=FALSE}
 ggplot(narocila, aes(narocila$tip.placila)) + geom_bar(labels = c("boleto", "kreditne kartice", "debetne kartice", "bon")) + 
-  labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete(labels = c("boleto", "kreditne kartice", "debetne kartice", "bon"))
+  labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete()
 
 ```
 
