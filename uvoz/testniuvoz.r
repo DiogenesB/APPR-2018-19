@@ -50,6 +50,8 @@ promet_2017 <- narocila %>%
     group_by(mesec.dostave) %>%
     summarise(vrednost.placila = sum(vrednost.placila))
 
+  
+
 
 
 ## Ker lahko plačujemo eno naročilo z različnimi plač. sredstvi, se lahko vrstice z istim ključem ponavljajo.
