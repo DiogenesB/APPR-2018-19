@@ -74,24 +74,25 @@ ggplot(narocila, aes(narocila$tip.placila)) + geom_bar(labels = c("boleto", "kre
 
 ```{r gostota cen, echo=FALSE, warning=FALSE}
 ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
-print(graf_porazdelitve_cen)
 ```
--------------
-```{r kategorije izdelkov, echo=FALSE}
+
+```{r kategorije izdelkov, echo=FALSE, message=FALSE}
 ##ggplot(izdelki, aes(izdelki$prevod)) + geom_bar()
 ## print(graf_kategorije_izdelkov)
 ```
---------------
-```{r promet 2017, echo=FALSE, warning=FALSE}
-ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
 
+```{r promet 2017, echo=FALSE, message=FALSE}
 meseci <- c("Januar", "Februar", "Marec", "April", "Maj", "Junij", "Julij", "Avgust", "September", "Oktober", "November", "December")
 ggplot(promet_2017, aes(x = promet_2017$mesec.dostave, y = promet_2017$vrednost.placila / 1000)) + geom_col() + 
   labs(title = "Pregled prometa v letu 2017", x = "Mesec", y = "Skupni promet (v 1000€)") + scale_x_continuous(breaks = 1:12, labels = meseci )
+```
 
+``` {r december 2017, echo=FALSE, message=FALSE}
 ggplot(december, aes(x=december$dan.narocila, y = december$vrednost.placila)) + geom_col() + 
   labs(title = "Pregled prometa v decembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:31)
+```
 
+``` {r november 2017, echo=FALSE, message=FALSE}
 ggplot(november, aes(x=november$dan.narocila, y=november$vrednost.placila)) + geom_col() +
   labs(title = "Pregled prometa v novembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:30)
 ```
