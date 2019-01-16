@@ -5,7 +5,6 @@ library(ggplot2)
 library(lubridate)
 
 
-
 #Uvoz prve tabele
 stolpci_1 <- c("kljuc.narocila", "kljuc.uporabnika", "status.narocila", "cas.nakupa", 
                "odobren.cas.nakupa", "cas.ko.je.posiljko.prejel.partner", "dejanski.cas.dostave", "predviden.cas.dostave" )
@@ -36,12 +35,14 @@ narocila <- left_join(tabela_narocil, tabela_vrst_placil, by = c("kljuc.narocila
 narocila <- narocila %>% drop_na()
 narocila$status.narocila <- as.factor(narocila$status.narocila)
 narocila$tip.placila <- as.factor(narocila$tip.placila)
+narocila$zaporedje.placila <- NULL
 narocila$kljuc.uporabnika <- NULL
 narocila$odobren.cas.nakupa <- NULL
 narocila$cas.ko.je.posiljko.prejel.partner <- NULL
 narocila$pravocasnost = narocila$predviden.cas.dostave >= narocila$dejanski.cas.dostave
 
 
+#Tabela ki opisuje promet na platformi v letu 2017
 promet_2017 <- narocila %>%
     select(dejanski.cas.dostave, vrednost.placila) %>%
     filter(dejanski.cas.dostave >= "2016-12-31" & dejanski.cas.dostave <= "2018-01-01") %>%
@@ -50,18 +51,24 @@ promet_2017 <- narocila %>%
     group_by(mesec.dostave) %>%
     summarise(vrednost.placila = sum(vrednost.placila))
 
-  
 
+#Tabela, ki opisuje promet na platformi v decembru leta 2017
+december <- narocila %>%
+  select(cas.nakupa, vrednost.placila) %>%
+  filter(cas.nakupa >= "2017-12-01" & cas.nakupa <= "2017-12-31") %>%
+  mutate(dan.narocila = day(cas.nakupa)) %>%
+  select(dan.narocila, vrednost.placila) %>%
+  group_by(dan.narocila) %>%
+  summarise(vrednost.placila = sum(vrednost.placila))
 
-
-## Ker lahko plačujemo eno naročilo z različnimi plač. sredstvi, se lahko vrstice z istim ključem ponavljajo.
-# narocila <- narocila %>%
-#     group_by(kljuc.narocila) %>%
-#     mutate(tip.placila = paste0(tip.placila, collapse = " ")) %>%
-#     mutate(vrednost.placila = sum(vrednost.placila)) 
-  
-
-
+#Tabela, ki opisuje promet na platformi v novembru leta 2017
+november <- narocila %>%
+  select(cas.nakupa, vrednost.placila) %>%
+  filter(cas.nakupa >= "2017-11-01" & cas.nakupa <= "2017-11-30") %>%
+  mutate(dan.narocila = day(cas.nakupa)) %>%
+  select(dan.narocila, vrednost.placila) %>%
+  group_by(dan.narocila) %>%
+  summarise(vrednost.placila = sum(vrednost.placila))
 
 
 #Združevanje 3. in 4. tabele
@@ -73,12 +80,6 @@ izdelki$število.objavljenih.fotografij.izdelka <- NULL
 names(izdelki)[6] <- c("kategorija.izdelka")
 
 
-# ggplot(narocila, aes(x=narocila$tip.placila)) + geom_bar()
-# ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density()
-# 
-# 
-# 
-# ggplot(narocila, aes(narocila$pravocasnost)) + geom_bar()
 
 
 
