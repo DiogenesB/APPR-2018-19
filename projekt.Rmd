@@ -64,23 +64,23 @@ Podatke sem uvozil v obliki 4 različnih CSV datotek, ki so zdaj v 2 razpredelni
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-```{r promet 2017, echo=FALSE, message=FALSE}
+```{r Promet2017, echo=FALSE, message=FALSE}
 graf_promet
 ```
 
-```{r tipi placil, echo=FALSE, warning=FALSE}
+```{r TipiPlacil, echo=FALSE, warning=FALSE}
 graf_tipi
 ```
 
-```{r gostota cen, echo=FALSE, warning=FALSE}
+```{r GostotaCen, echo=FALSE, warning=FALSE}
 graf_gostote
 ```
 
-```{r december 2017, echo=FALSE, message=FALSE}
+```{r December2017, echo=FALSE, message=FALSE}
 graf_december
 ```
 
-```{r november 2017, echo=FALSE, message=FALSE}
+```{r November2017, echo=FALSE, message=FALSE}
 graf_november
 ```
 
