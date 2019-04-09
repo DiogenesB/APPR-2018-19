@@ -6,7 +6,7 @@ graf_promet <- ggplot(promet_2017, aes(x = promet_2017$mesec.dostave, y = promet
   labs(title = "Pregled prometa v letu 2017", x = "Mesec", y = "Skupni promet (v 1000€)") + scale_x_continuous(breaks = 1:12, labels = meseci )
 
 graf_tipi <- ggplot(narocila, aes(narocila$tip.placila)) + geom_bar() +
-  labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete()
+  labs(title = "Plačilna sredstva", x = "Tip plačilnega sredstva", y = "Število nakupov") + scale_x_discrete() + coord_flip()
 
 graf_gostote <- ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
 
