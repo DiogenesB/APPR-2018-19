@@ -10,6 +10,8 @@ graf_tipi <- ggplot(narocila, aes(narocila$tip.placila)) + geom_bar() +
 
 graf_gostote <- ggplot(narocila, aes(narocila$vrednost.placila)) + geom_density() + scale_x_log10() + labs(title = "Porazdelitev vrednosti nakupov", x = "Vrednost plačila (log)", y = "Delež naročil")
 
+graf_gostot <- ggplot(narocila, aes(x = narocila$vrednost.placila, color=narocila$tip.placila)) + geom_density()  + scale_x_log10()
+
 graf_december <- ggplot(december, aes(x=december$dan.narocila, y = december$vrednost.placila)) + geom_col() +
   labs(title = "Pregled prometa v decembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:31)
 

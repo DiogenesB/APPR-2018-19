@@ -73,7 +73,7 @@ graf_tipi
 ```
 
 ```{r GostotaCen, echo=FALSE, warning=FALSE}
-graf_gostote
+graf_gostot
 ```
 
 ```{r December2017, echo=FALSE, message=FALSE}
