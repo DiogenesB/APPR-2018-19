@@ -17,7 +17,3 @@ graf_november <- ggplot(november, aes(x=november$dan.narocila, y=november$vredno
   labs(title = "Pregled prometa v novembru 2017", x = "Dan", y = "Skupni promet") + scale_x_continuous(breaks = 1:30)
 
 
-## TODO: premakni tabele za vizualizacijo sem
-## TODO: graf porazdelitve za vsako metodo posebej
-## TODO: zemljevid uvozi (vizualizacije naročil)
-## TODO: Analiza odvisnosti
