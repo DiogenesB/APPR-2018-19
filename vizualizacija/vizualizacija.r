@@ -1,5 +1,13 @@
 library(ggplot2)
-library(reshape2)
+library(ggvis)
+library(dplyr)
+library(rgdal)
+library(mosaic)
+library(maptools)
+library(ggmap)
+library(mapproj)
+library(munsell)
+source("lib/uvozi.zemljevid.r")
 
 meseci <- c("Januar", "Februar", "Marec", "April", "Maj", "Junij", "Julij", "Avgust", "September", "Oktober", "November", "December")
 graf_promet <- ggplot(promet_2017, aes(x = promet_2017$mesec.dostave, y = promet_2017$vrednost.placila / 1000)) + geom_col() + 
@@ -18,4 +26,8 @@ graf_november <- ggplot(november, aes(x=november$dan.narocila, y=november$vredno
 
 
 # TODO: popravi pozicioniranje grafov
-# TODO: uvozi zemljevid
+
+
+svet <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_BRA_shp.zip",
+                        "gadm36_BRA_1") %>% fortify()
+
