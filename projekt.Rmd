@@ -82,6 +82,7 @@ graf_december
 
 ```{r November2017, echo=FALSE, message=FALSE}
 graf_november
+svet
 ```
 
 

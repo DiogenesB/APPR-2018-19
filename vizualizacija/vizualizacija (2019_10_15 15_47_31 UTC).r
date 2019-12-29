@@ -39,4 +39,3 @@ map <- ggplot(brazilija, aes(x=long, y=lat)) +
   geom_point(aes(x=lokacija_kupcev$zemljepisna.dolzina, y=lokacija_kupcev$zemljepisna.sirina), lokacija_kupcev, col="blue")
   labs(title ="Vizualizacija prodajalcev in kupcev") 
 
-
